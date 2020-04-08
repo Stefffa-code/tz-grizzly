@@ -24,6 +24,7 @@ function clear(){
 function script(){
 	return gulp.src([
 			'node_modules/jquery/dist/jquery.min.js',
+			'./src/js/slick.min.js',
 			'./src/js/script.js'
         ])
 		.pipe(gulpif(isDev, sourcemaps.init()))
@@ -36,7 +37,11 @@ function script(){
 }
 
 function styles(){
-	return gulp.src('./src/styles/styles.less')
+	return gulp.src([
+		'./src/styles/plugin/slick.css',
+		'./src/styles/plugin/slick-theme.css',
+		'./src/styles/styles.less'
+		])
 		.pipe(gulpif(isDev, sourcemaps.init()))
 		.pipe(less())
 		//.pipe(concat('style.css'))
